@@ -1,0 +1,43 @@
+!!! 5
+html(lang="en")
+  head
+    title= title
+    link(rel="stylesheet", href="/static/bootstrap.min.css")
+    style(type="text/css")
+      body {padding-top: 60px; max-width: 100%;}
+      img {max-width: 100%;}
+      .container-fluid > .sidebar {float:right; width:12%;min-width:160px; margin-left:1%;position:relative;left:0px;}
+      .container-fluid > .content {margin-left:18%;width:61%;float:left;}
+      .container-fluid > #sidebar-left {position:absolute;}
+  body
+    div.topbar(data-dropdown="dropdown")
+      div.topbar-inner
+        div.container
+          h3 
+            a(href="/") DIA
+          ul.nav-list.pkg
+            li.active
+              a(href="/") Home
+            li
+              a(href="/add") New Image
+    div.container-fluid
+      div#sidebar-left.sidebar
+        div.well
+          h3 Links
+          ul
+            li Derp
+            li Herp
+            li Cheese
+            li Pizza
+            li Hotdogs
+      div.content
+        != body
+      div#sidebar-right.sidebar
+        div.well
+          ul
+            li Cheesy
+            li Porcupines
+            li Like 
+            li To
+            li Eat
+            li Babies :D
