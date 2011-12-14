@@ -2,14 +2,14 @@ extends default
 html
   head
     block title
-      title DIA
+      title Upload failed.
   body
     block nav
       li
-        .active
-          a(href="/") Home
+        a(href="/") Home
       li
-        a(href="/add") New Image
+        .active
+          a(href="/add") New Image
     block links
       li
         a(href="/") Home
@@ -17,6 +17,6 @@ html
         a(href="/add") New Image
     block body
       .hero-unit
-        h2 Welcome Bitches!
+        h3!= message
     block rightbar
-      p Welcome to the site bitches. Ain't this a wonderful place?
+      p Nothing to see here...

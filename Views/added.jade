@@ -1,5 +1,8 @@
 extends default
-html
+html  
+  head
+    block title
+      title Upload complete!
   body
     block nav
       li
@@ -14,6 +17,6 @@ html
         a(href="/add") New Image
     block body
       .hero-unit
-        h3= message
+        h3!= message
     block rightbar
       p Nothing to see here...
