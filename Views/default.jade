@@ -10,34 +10,20 @@ html(lang="en")
       .container-fluid > .content {margin-left:18%;width:61%;float:left;}
       .container-fluid > #sidebar-left {position:absolute;}
   body
-    div.topbar(data-dropdown="dropdown")
-      div.topbar-inner
-        div.container
+    .topbar(data-dropdown="dropdown")
+      .topbar-inner
+        .container
           h3 
             a(href="/") DIA
           ul.nav-list.pkg
-            li.active
-              a(href="/") Home
-            li
-              a(href="/add") New Image
-    div.container-fluid
-      div#sidebar-left.sidebar
-        div.well
+            block nav
+    .container-fluid
+      #sidebar-left.sidebar
+        .well
           h3 Links
-          ul
-            li Derp
-            li Herp
-            li Cheese
-            li Pizza
-            li Hotdogs
-      div.content
-        != body
-      div#sidebar-right.sidebar
-        div.well
-          ul
-            li Cheesy
-            li Porcupines
-            li Like 
-            li To
-            li Eat
-            li Babies :D
+          block links
+      .content
+        block body
+      #sidebar-right.sidebar
+        .well
+          block rightbar
