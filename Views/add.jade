@@ -1,0 +1,38 @@
+extends default
+html
+  body
+    block nav
+      li
+        a(href="/") Home
+      li
+        .active
+          a(href="/add") New Image
+    block links
+      li
+        a(href="/") Home
+      li
+        a(href="/add") New Image
+    block body
+      form(action="/add", method="post", enctype="multipart/form-data")
+        fieldset
+          legend New Image
+          .clearfix
+            label(for="text") Image name
+            .input
+              input(type="text", name="title")
+          .clearfix
+            label(for="file") Image file 
+            .input
+              input(type="file", name="filedata")
+          .clearfix
+            label(for="text") Image source
+            .input
+              input(type="text", name="source")
+          .clearfix
+            label(for="textarea") Image Description
+            .input
+              textarea(name="description", rows="3")
+          div.actions.clearfix
+            input.btn.primary(type="submit")
+    block rightbar
+      p Nothing to see here...
