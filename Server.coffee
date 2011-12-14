@@ -23,7 +23,7 @@ console.log 'Registering handlers...'
 
 app.get('/', (req, res)->
     console.log 'Serving a request for ' + req.url
-    res.render 'index', {layout: 'default', title: 'Welcome.'}
+    res.render 'index', {layout: 'index', title: 'Welcome.'}
 )
 
 console.log 'Starting to listen...'

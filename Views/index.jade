@@ -1,2 +1,19 @@
-div.hero-unit
-  h2 Welcome Bitches!
+extends default
+html
+  body
+    block nav
+      li
+        .active
+          a(href="/") Home
+      li
+        a(href="/add") New Image
+    block links
+      li
+        a(href="/") Home
+      li
+        a(href="/add") New Image
+    block body
+      .hero-unit
+        h2 Welcome Bitches!
+    block rightbar
+      p Welcome to the site bitches. Ain't this a wonderful place?
