@@ -31,6 +31,11 @@ app.get '/', (req, res)->
 app.get '/add', (req, res)->
     res.render 'add'
 
+app.post '/posttest', (req, res)->
+    console.log req.body
+    console.log req.files
+    res.render 'added', {message: 'Check log.'}
+
 app.post '/add', (req, res)->
     filemime = req.files.filedata.type
     filepath = req.files.filedata.path
@@ -42,12 +47,14 @@ app.post '/add', (req, res)->
         fs.unlink filepath, (err)->
             if err 
                console.log err
+            res.statusCode = 400
             res.render 'upfailed', { message:'No file sent.'}
         return 1
     if (config.allowedImageTypes.indexOf(filemime) == -1)
         fs.unlink filepath, (err)->
             if err 
                console.log err
+            res.statusCode = 415
             res.render 'upfailed', { message:'Upload failed. Wrong filetype.'}
         return 1
     else
@@ -56,13 +63,16 @@ app.post '/add', (req, res)->
                 throw err
                 fs.unlink filepath, (err)->
                     if err 
+                        res.statusCode = 500
                         res.render 'upfailed', { message:'Something went VERY wrong...'}
                     else
+                        res.statusCode = 500
                         res.render 'upfailed', { message:'Something went wrong...'}
             else
                 db.save dbucket, filename, image, filemeta, (err, data, meta)->
                     if err
                         console.log err
+                        res.statusCode = 500
                         res.render 'upfailed', { message:"Uploading to database didn't work :("}
                     else
                         console.log meta
@@ -75,10 +85,12 @@ app.get '/image/:name', (req, res)->
     db.get dbucket, req.params.name, {encodeUri:true}, (err, data, meta)->
         if not meta.contentType
             console.log meta
+            res.statusCode = 404
             res.render 'noimage', { message:'Image not found :( <br/>Probably the database :/'}
         else
             if err
                 console.log err
+                res.statusCode = 404
                 res.render 'noimage', { message:'Image not found :('}
             else
                 res.writeHead 200, {'Content-Type': meta.contentType}
